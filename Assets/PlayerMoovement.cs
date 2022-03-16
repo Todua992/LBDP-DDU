@@ -15,20 +15,21 @@ public class PlayerMoovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.z = Input.GetAxis("Vertical");
+        
 
         mousePosi = Input.mousePosition;
 
         mousePosi.x -= Screen.width / 2;
         mousePosi.y -= Screen.height / 2;
 
-        Debug.Log(mousePosi.x);
-        Debug.Log(mousePosi.y);
+       // Debug.Log(mousePosi.x);
+       // Debug.Log(mousePosi.y);
     }
 
     private void FixedUpdate()
     {
+        movement.x = Input.GetAxis("Horizontal");
+        movement.z = Input.GetAxis("Vertical");
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         Vector2 lookDir = mousePosi - rb.position;
         float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg + 90f;
