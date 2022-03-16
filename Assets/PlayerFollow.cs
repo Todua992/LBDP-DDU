@@ -6,8 +6,6 @@ public class PlayerFollow : MonoBehaviour
 {
     public float offset;
     public Transform Player;
-    public float rotation;
-    public float x;
     public float y;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +17,7 @@ public class PlayerFollow : MonoBehaviour
     void Update()
     {
 
-        this.transform.position = new Vector3(Player.position.x + x, offset, Player.position.z + y);
+        this.transform.position = new Vector3(Player.position.x, offset, Player.position.z - 14.4f);
         
     }
 }

@@ -34,5 +34,7 @@ public class PlayerMoovement : MonoBehaviour
         Vector2 lookDir = mousePosi - rb.position;
         float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg + 90f;
         rb.rotation = Quaternion.Euler(0, angle, 0);
+
+       
     }
 }
