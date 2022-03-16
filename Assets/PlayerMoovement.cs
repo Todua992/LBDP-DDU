@@ -16,12 +16,15 @@ public class PlayerMoovement : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxis("Horizontal");
-       movement.z = Input.GetAxis("Vertical");
+        movement.z = Input.GetAxis("Vertical");
 
         mousePosi = Input.mousePosition;
 
         mousePosi.x -= Screen.width / 2;
-        mousePosi.y -= Screen.width / 2;
+        mousePosi.y -= Screen.height / 2;
+
+        Debug.Log(mousePosi.x);
+        Debug.Log(mousePosi.y);
     }
 
     private void FixedUpdate()
