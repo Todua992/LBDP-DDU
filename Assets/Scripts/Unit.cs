@@ -7,7 +7,7 @@ namespace PatrogueStudio.Astar {
         public float speed;
         private Vector3[] path;
         private int targetIndex;
-        private float timer = 1f;
+        private float timer = 0.1f;
         public Rigidbody rb;
         private Vector3 oldTarget;
         public float rotationspeed = 20;
@@ -24,10 +24,7 @@ namespace PatrogueStudio.Astar {
         {
 
 
-            Vector3 direction = target.position - transform.position;
-            direction.y = 0f;
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+            
 
 
             if (timer <= 0f) {
@@ -36,7 +33,7 @@ namespace PatrogueStudio.Astar {
                 }
 
                 oldTarget = target.position;
-                timer = Random.Range(0.5f, 1.5f);
+                timer = Random.Range(0.1f, 0.2f);
             } else {
                 timer -= Time.deltaTime;
             }
@@ -69,7 +66,12 @@ namespace PatrogueStudio.Astar {
                     currentWaypoint = path[targetIndex];
                 }
 
+                Vector3 direction = currentWaypoint - transform.position;
+                direction.y = 0f;
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+
                 yield return null;
             }
         }

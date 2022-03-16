@@ -143,7 +143,7 @@ MonoBehaviour:
   target: {fileID: 1401381909}
   speed: 5
   rb: {fileID: 433877}
-  rotationspeed: 10
+  rotationspeed: 35
 --- !u!54 &433877
 Rigidbody:
   m_ObjectHideFlags: 0
