@@ -17,7 +17,7 @@ public class PlayerFollow : MonoBehaviour
     void Update()
     {
 
-        this.transform.position = new Vector3(Player.position.x, offset, Player.position.z - 14.4f);
+        this.transform.position = new Vector3(Player.position.x, offset, Player.position.z - y);
         
     }
 }

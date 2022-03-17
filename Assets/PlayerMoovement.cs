@@ -11,16 +11,23 @@ public class PlayerMoovement : MonoBehaviour
     public Camera cam;
     Vector3 movement;
     Vector3 mousePosi;
+    public float s;
+   
+
 
     // Update is called once per frame
     void Update()
     {
+
         
 
         mousePosi = Input.mousePosition;
 
         mousePosi.x -= Screen.width / 2;
         mousePosi.y -= Screen.height / 2;
+        
+
+
 
        // Debug.Log(mousePosi.x);
        // Debug.Log(mousePosi.y);
