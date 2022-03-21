@@ -7,11 +7,11 @@ namespace PatrogueStudio.Astar {
         public float speed;
         private Vector3[] path;
         private int targetIndex;
-        private float timer = 0.1f;
+        private float timer;
         public float timerUPS;
         public Rigidbody rb;
         private Vector3 oldTarget;
-        public float rotationspeed = 20;
+        public float rotationspeed;
 
         private void Start() {
             PathRequestManager.RequestPath(transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)), target.position, OnPathFound);
