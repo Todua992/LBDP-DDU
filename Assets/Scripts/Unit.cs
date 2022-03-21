@@ -26,32 +26,50 @@ namespace PatrogueStudio.Astar {
             oldTarget = target.position;
 
             timer = defaultTimer;
-            killTimer = 1f;
+            killTimer = 2f;
+
+           
         }
 
         [System.Obsolete]
-        private void Update() {
-            if (failed) {
-                if (killTimer <= 0f) {
+
+        private void FixedUpdate()
+        {
+            if (failed)
+            {
+                if (killTimer <= 0f)
+                {
                     Destroy(gameObject);
-                } else {
+                }
+                else
+                {
                     killTimer -= Time.deltaTime;
                 }
-            } else {
-                killTimer = 1f;
             }
-            
-            if (timer <= 0f) {
-                if (oldTarget != target.position) {
+            else
+            {
+                killTimer = 2f;
+            }
+            if (timer <= 0f)
+            {
+                if (oldTarget != target.position)
+                {
                     PathRequestManager.RequestPath(transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)), target.position, OnPathFound);
                 }
 
                 oldTarget = target.position;
                 timer = defaultTimer;
-            } else {
+            }
+            else
+            {
                 timer -= Time.deltaTime;
             }
+
+           
+
         }
+      
+
 
         public void OnPathFound(Vector3[] newPath, bool pathSuccessfull) {
             if (pathSuccessfull) {
@@ -102,6 +120,8 @@ namespace PatrogueStudio.Astar {
                     }
                 }
             }
+
+            
         }
     }
 }
