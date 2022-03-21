@@ -4,7 +4,7 @@ public class SelfDestruct : MonoBehaviour {
 
     public float timer;
     private void OnCollisionEnter(Collision collision) {
-        Destroy(transform.gameObject);
+        Destroy(gameObject);
     }
 
     public void Update() {

@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace PatrogueStudio.Astar {
     public class Unit : MonoBehaviour {
-        public Transform target;
         public float movementSpeed;
         public float rotationSpeed;
         public float defaultTimer;
@@ -12,11 +11,12 @@ namespace PatrogueStudio.Astar {
         private int targetIndex;
         private float timer;
 
+        private Transform target;
         private Rigidbody rb;
         private Vector3 oldTarget;
 
-
         private void Start() {
+            target = GameObject.Find("Player").GetComponent<Transform>();
             rb = GetComponent<Rigidbody>();
             
             PathRequestManager.RequestPath(transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)), target.position, OnPathFound);
@@ -46,6 +46,8 @@ namespace PatrogueStudio.Astar {
                 path = newPath;
                 StopCoroutine(nameof(FollowPath));
                 StartCoroutine(nameof(FollowPath));
+            } else {
+                Destroy(gameObject);
             }
         }
 
