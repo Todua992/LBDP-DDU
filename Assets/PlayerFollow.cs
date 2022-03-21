@@ -1,23 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFollow : MonoBehaviour
-{
-    public float offset;
-    public Transform Player;
-    public float y;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class PlayerFollow : MonoBehaviour {
+    [SerializeField]
+    private Transform Player;
 
-    // Update is called once per frame
-    void Update()
-    {
+    [SerializeField]
+    private Vector3 offset;
 
-        this.transform.position = new Vector3(Player.position.x, offset, Player.position.z - y);
-        
+    void FixedUpdate() {
+        transform.position = new Vector3(Player.position.x + offset.x, offset.y, Player.position.z + offset.z);
     }
 }

@@ -1101,9 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rb: {fileID: 1401381910}
   cam: {fileID: 0}
-  s: 90
 --- !u!23 &1401381907
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1458,5 +1456,9 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1401381909}
+    - target: {fileID: 2193398534137597064, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
+      propertyPath: offset.y
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
