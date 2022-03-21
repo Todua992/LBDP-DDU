@@ -7,11 +7,14 @@ public class Health : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
-    private bool colliding;
+    public bool colliding;
+    private Health playercollision; 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        GameObject g = GameObject.FindGameObjectWithTag("Player");
+        playercollision = g.GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -21,18 +24,22 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        if (currentHealth <= 0)
-        {
-           float dropvalue = Random.Range(0f, 1f);
-            if (1 - dropchance < dropvalue)
-            {
-                Instantiate(medkit,new Vector3(transform.position.x, transform.position.y + 1, transform.position.z ), transform.rotation);
-            }
-            Destroy(gameObject);
-        }
+        
         if (colliding == true)
         {
             TakeDamage(1);
+        }
+        
+        if (currentHealth <= 0)
+        {
+            float dropvalue = Random.Range(0f, 1f);
+            if (1 - dropchance < dropvalue)
+            {
+                Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
+            }
+            Destroy(gameObject);
+            playercollision.colliding = false;
+
         }
     }
     void OnCollisionEnter (Collision target)
@@ -40,7 +47,7 @@ public class Health : MonoBehaviour
         
         if (gameObject.tag == target.gameObject.tag && currentHealth < maxHealth)
         {
-            Debug.Log(currentHealth);
+            
             AddHealth(10);
             Destroy(target.gameObject);
         }
