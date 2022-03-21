@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Main Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &752418580
 GameObject:
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 1308064393}
   - component: {fileID: 1308064392}
   m_Layer: 0
-  m_Name: A*
+  m_Name: A* Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,7 +1006,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393410995
 GameObject:
@@ -1234,8 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d5b71ed72b0a442b588466051d9daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Startpoint: {fileID: 301057694}
-  BulletPrefab: {fileID: 8489159508124107898, guid: a7f7dd710698a2c49abab6afe20d0e95, type: 3}
+  start: {fileID: 0}
+  bullet: {fileID: 0}
   bulletSpeed: 20
 --- !u!1 &1493424297
 GameObject:
@@ -1444,11 +1444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193398534137597060, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
       propertyPath: m_Name
-      value: Camera
+      value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2193398534137597061, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2193398534137597061, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1497,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 2193398534137597064, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
       propertyPath: offset.y
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6482164120009507444, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
+      propertyPath: m_Name
+      value: Post Processing
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1439de104bd1af74cb47bd20f1fdff97, type: 3}
