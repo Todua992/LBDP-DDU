@@ -7,7 +7,7 @@ public class PlayerFollow : MonoBehaviour {
     [SerializeField]
     private Vector3 offset;
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         transform.position = new Vector3(Player.position.x + offset.x, offset.y, Player.position.z + offset.z);
     }
 }
