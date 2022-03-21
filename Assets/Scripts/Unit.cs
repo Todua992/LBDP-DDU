@@ -58,7 +58,6 @@ namespace PatrogueStudio.Astar {
 
                     currentWaypoint = path[targetIndex];
                 }
-
                 Vector3 direction = currentWaypoint - transform.position;
                 direction.y = 0f;
                 Quaternion rotation = Quaternion.LookRotation(direction);
