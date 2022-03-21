@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2193398534137597064}
   - component: {fileID: 1462454888279342308}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56de728c28d70d4aa0ef01a7287d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 18
-  Player: {fileID: 0}
-  y: 0
+  player: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1462454888279342308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +172,7 @@ GameObject:
   - component: {fileID: 6482164120009507447}
   - component: {fileID: 6482164120009507446}
   m_Layer: 8
-  m_Name: Post
+  m_Name: Post Processing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
