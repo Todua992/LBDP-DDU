@@ -141,10 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1401381909}
-  speed: 5
-  timerUPS: 10
-  rb: {fileID: 433877}
-  rotationspeed: 35
+  movementSpeed: 2
+  rotationSpeed: 35
+  defaultTimer: 0.1
 --- !u!54 &433877
 Rigidbody:
   m_ObjectHideFlags: 0

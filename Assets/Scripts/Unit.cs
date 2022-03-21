@@ -4,20 +4,25 @@ using UnityEngine;
 namespace PatrogueStudio.Astar {
     public class Unit : MonoBehaviour {
         public Transform target;
-        public float speed;
+        public float movementSpeed;
+        public float rotationSpeed;
+        public float defaultTimer;
+
         private Vector3[] path;
         private int targetIndex;
         private float timer;
-        public float timerUPS;
-        public Rigidbody rb;
+
+        private Rigidbody rb;
         private Vector3 oldTarget;
-        public float rotationspeed;
+
 
         private void Start() {
+            rb = GetComponent<Rigidbody>();
+            
             PathRequestManager.RequestPath(transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)), target.position, OnPathFound);
             oldTarget = target.position;
 
-            timer = 1 / timerUPS;
+            timer = defaultTimer;
         }
 
         [System.Obsolete]
@@ -28,7 +33,7 @@ namespace PatrogueStudio.Astar {
                 }
 
                 oldTarget = target.position;
-                timer = 1 / timerUPS;
+                timer = defaultTimer;
             } else {
                 timer -= Time.deltaTime;
             }
@@ -61,7 +66,7 @@ namespace PatrogueStudio.Astar {
                 Vector3 direction = currentWaypoint - transform.position;
                 direction.y = 0f;
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.SetPositionAndRotation(Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime), Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime));
+                transform.SetPositionAndRotation(Vector3.MoveTowards(transform.position, currentWaypoint, movementSpeed * Time.deltaTime), Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime));
 
                 yield return null;
             }
