@@ -1,13 +1,10 @@
 using UnityEngine;
 
 public class PlayerFollow : MonoBehaviour {
-    [SerializeField]
-    private Transform Player;
-
-    [SerializeField]
-    private Vector3 offset;
+    [SerializeField] private Transform player;
+    [SerializeField] private Vector3 offset;
 
     private void FixedUpdate() {
-        transform.position = new Vector3(Player.position.x + offset.x, offset.y, Player.position.z + offset.z);
+        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, player.position.z + offset.z);
     }
 }

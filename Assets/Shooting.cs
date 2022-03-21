@@ -1,10 +1,9 @@
 using UnityEngine;
 
 public class Shooting : MonoBehaviour {
-    public Transform Startpoint;
-    public GameObject BulletPrefab;
-
-    public float bulletSpeed = 20f;
+    [SerializeField] private Transform start;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float bulletSpeed;
 
     private void Update() {
         if (Input.GetButtonDown("Fire1")) {
@@ -13,8 +12,8 @@ public class Shooting : MonoBehaviour {
     }
 
     private void Shoot() {
-        GameObject bullet = Instantiate(BulletPrefab, Startpoint.position, Startpoint.rotation);
+        GameObject bullet = Instantiate(this.bullet, start.position, start.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(Startpoint.right * bulletSpeed, ForceMode.Impulse);
+        rb.AddForce(start.right * bulletSpeed, ForceMode.Impulse);
     }
 }
