@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 6586630618246569722}
   - component: {fileID: 7739298664972266299}
   m_Layer: 8
-  m_Name: Heart
+  m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a8e023b5e66b0d478386a07d1627765, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee1c17298e2534c4cbdd6c968c1cb9e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1840,6 +1840,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 3508029397254413876}
+  dropchance: 0.25
+  medkit: {fileID: 4987142262350208161, guid: b9b55cf1c220aa745bde4e2b73b73f37, type: 3}
 --- !u!136 &8980077221523526700
 CapsuleCollider:
   m_ObjectHideFlags: 0

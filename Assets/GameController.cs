@@ -5,12 +5,37 @@ public class GameController : MonoBehaviour {
     [SerializeField] private Transform player;
     [SerializeField] private Vector2 innerZone;
     [SerializeField] private Vector2 outerZone;
+    [SerializeField] private float Starttimer;
+    private float time;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            SpawnEnemy();
+
+
+
+
+    private void Start()
+    {
+        SpawnEnemy();
+        time = Starttimer;
+    }
+        private void FixedUpdate()
+    {
+        
+        if (time > 0f)
+        {
+            time -= Time.deltaTime;
+            if (time <= 0f)
+            {
+                SpawnEnemy();
+                time = Starttimer;
+            }
         }
     }
+
+
+
+
+
+
 
     private void SpawnEnemy() {
         float x;
