@@ -15,6 +15,9 @@ namespace PatrogueStudio.Astar {
         private Rigidbody rb;
         private Vector3 oldTarget;
 
+        private float killTimer;
+        private bool failed = false;
+
         private void Start() {
             target = GameObject.Find("Player").GetComponent<Transform>();
             rb = GetComponent<Rigidbody>();
@@ -23,10 +26,21 @@ namespace PatrogueStudio.Astar {
             oldTarget = target.position;
 
             timer = defaultTimer;
+            killTimer = 1f;
         }
 
         [System.Obsolete]
         private void Update() {
+            if (failed) {
+                if (killTimer <= 0f) {
+                    Destroy(gameObject);
+                } else {
+                    killTimer -= Time.deltaTime;
+                }
+            } else {
+                killTimer = 1f;
+            }
+            
             if (timer <= 0f) {
                 if (oldTarget != target.position) {
                     PathRequestManager.RequestPath(transform.position + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)), target.position, OnPathFound);
@@ -44,10 +58,11 @@ namespace PatrogueStudio.Astar {
                 targetIndex = 0;
                 path = new Vector3[0];
                 path = newPath;
+                failed = false;
                 StopCoroutine(nameof(FollowPath));
                 StartCoroutine(nameof(FollowPath));
             } else {
-                Destroy(gameObject);
+                failed = true;
             }
         }
 
