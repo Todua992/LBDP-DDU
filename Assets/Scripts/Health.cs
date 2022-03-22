@@ -3,28 +3,25 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float currentHealth;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
-   
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-       
-        
+
     }
 
     // Update is called once per frame
-    void FixedUpdate() {      
-
-        if(currentHealth > maxHealth)
+    void FixedUpdate()
+    {
+        if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
-        
-        
+
         if (currentHealth <= 0)
         {
             float dropvalue = Random.Range(0f, 1f);
@@ -32,17 +29,14 @@ public class Health : MonoBehaviour
             {
                 Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
             }
-           
-            Destroy(gameObject);
-            
 
+            Destroy(gameObject);
         }
     }
-    
-    void OnCollisionEnter (Collision target)
+
+    void OnCollisionEnter(Collision target)
     {
-        
-            if (target.gameObject.tag == "Bullet")
+        if (target.gameObject.tag == "Bullet")
         {
             TakeDamage(20);
         }
@@ -53,8 +47,6 @@ public class Health : MonoBehaviour
 
     }
 
-  
-    
     void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -77,7 +69,7 @@ public class Health : MonoBehaviour
 
         if (gameObject.tag == target.gameObject.tag && currentHealth + 1 < maxHealth)
         {
-            
+
             if (target.collider.gameObject.layer == LayerMask.NameToLayer("Medkit"))
             {
                 AddHealth(10);

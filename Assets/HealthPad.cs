@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPad : MonoBehaviour
 {
-
+    public Health health;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+   
     void Start()
     {
         currentHealth = maxHealth;
@@ -16,6 +15,7 @@ public class HealthPad : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -25,7 +25,6 @@ public class HealthPad : MonoBehaviour
             Destroy(gameObject);
         }
 
-
     }
     void TakeDamage(float damage)
     {
@@ -34,13 +33,12 @@ public class HealthPad : MonoBehaviour
 
     private void OnCollisionStay(Collision target)
     {
-        
-            if (target.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                TakeDamage(0.1f);
-           
-                
-            }
-        
+
+        if (target.collider.gameObject.layer == LayerMask.NameToLayer("Player") && health.currentHealth + 1 < 100)
+        {
+            TakeDamage(0.1f);
+
+        }
+
     }
 }
