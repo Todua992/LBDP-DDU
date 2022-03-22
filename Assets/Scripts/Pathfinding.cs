@@ -67,6 +67,7 @@ namespace PatrogueStudio.Astar {
             if (pathSuccess) {
                 waypoints = RetracePath(startNode, targetNode);
             }
+            
             requestManager.FinishedProcessingPath(waypoints, pathSuccess);
         }
 

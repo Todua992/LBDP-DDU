@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
-    public bool colliding;
-    private Health playercollision; 
+   
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        GameObject g = GameObject.FindGameObjectWithTag("Player");
-        playercollision = g.GetComponent<Health>();
+       
+        
     }
 
     // Update is called once per frame
@@ -25,10 +24,6 @@ public class Health : MonoBehaviour
             currentHealth = maxHealth;
         }
         
-        if (colliding == true)
-        {
-            TakeDamage(1);
-        }
         
         if (currentHealth <= 0)
         {
@@ -37,49 +32,62 @@ public class Health : MonoBehaviour
             {
                 Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
             }
+           
             Destroy(gameObject);
-            playercollision.colliding = false;
+            
 
         }
     }
+    
     void OnCollisionEnter (Collision target)
     {
         
-        if (gameObject.tag == target.gameObject.tag && currentHealth < maxHealth)
-        {
-            
-            AddHealth(10);
-            Destroy(target.gameObject);
-        }
-
             if (target.gameObject.tag == "Bullet")
         {
             TakeDamage(20);
         }
-        if(target.gameObject.tag == "Enemy")
+        if (target.gameObject.tag == "Player")
         {
-            colliding = true;
+            TakeDamage(0.1f);
         }
+
     }
 
-    private void OnCollisionExit(Collision target)
-    {
-        if(target.gameObject.tag == "Enemy")
-        {
-            colliding = false;
-        }
-    }
-    void TakeDamage(int damage)
+  
+    
+    void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
     }
-    void AddHealth(int health)
+    void AddHealth(float health)
     {
         currentHealth += health;
 
         healthBar.SetHealth(currentHealth);
+    }
+
+    private void OnCollisionStay(Collision target)
+    {
+        if (target.gameObject.tag == "Enemy")
+        {
+            TakeDamage(1);
+        }
+
+        if (gameObject.tag == target.gameObject.tag && currentHealth + 1 < maxHealth)
+        {
+            
+            if (target.collider.gameObject.layer == LayerMask.NameToLayer("Medkit"))
+            {
+                AddHealth(10);
+                Destroy(target.gameObject);
+            }
+            else
+            {
+                AddHealth(0.1f);
+            }
+        }
     }
 
 }

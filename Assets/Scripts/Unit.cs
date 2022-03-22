@@ -7,6 +7,7 @@ namespace PatrogueStudio.Astar {
         public float rotationSpeed;
         public float defaultTimer;
 
+
         private Vector3[] path;
         private int targetIndex;
         private float timer;
@@ -39,7 +40,7 @@ namespace PatrogueStudio.Astar {
             {
                 if (killTimer <= 0f)
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
                 else
                 {
