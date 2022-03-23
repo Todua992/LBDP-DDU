@@ -1,11 +1,13 @@
 using UnityEngine;
 
 public class HealthPad : MonoBehaviour {
-    public Health health;
+    private Health health;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
 
     private void Start() {
+        health = GameObject.Find("Player").GetComponent<Health>();
+
         currentHealth = maxHealth;
     }
 
