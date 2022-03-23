@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour {
         mousePos = Input.mousePosition;
         mousePos.x -= Screen.width / 2;
         mousePos.y -= Screen.height / 2;
-
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * movement);

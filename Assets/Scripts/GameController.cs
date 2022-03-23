@@ -8,34 +8,20 @@ public class GameController : MonoBehaviour {
     [SerializeField] private float Starttimer;
     private float time;
 
-
-
-
-
-    private void Start()
-    {
+    private void Start() {
         SpawnEnemy();
         time = Starttimer;
     }
-        private void FixedUpdate()
-    {
-        
-        if (time > 0f)
-        {
+    private void FixedUpdate() {
+
+        if (time > 0f) {
             time -= Time.deltaTime;
-            if (time <= 0f)
-            {
+            if (time <= 0f) {
                 SpawnEnemy();
                 time = Starttimer;
             }
         }
     }
-
-
-
-
-
-
 
     private void SpawnEnemy() {
         float x;
