@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# IDE2001: Embedded statements must be on their own line
+dotnet_diagnostic.IDE2001.severity = none
+
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none
+
+# IDE0048: Add parentheses for clarity
+dotnet_diagnostic.IDE0048.severity = none
