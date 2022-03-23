@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
+    public bool destroyed = false;
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,7 +30,7 @@ public class Health : MonoBehaviour
             {
                 Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1.7f, transform.position.z), transform.rotation);
             }
-
+            destroyed = true;
             Destroy(gameObject);
         }
     }

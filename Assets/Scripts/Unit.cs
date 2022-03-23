@@ -7,6 +7,7 @@ namespace PatrogueStudio.Astar {
         public float rotationSpeed;
         public float defaultTimer;
 
+        public Health enemy;
 
         private Vector3[] path;
         private int targetIndex;
@@ -29,7 +30,11 @@ namespace PatrogueStudio.Astar {
             timer = defaultTimer;
             killTimer = 2f;
 
-           
+            enemy = GetComponent<Health>();
+
+         
+
+
         }
 
         [System.Obsolete]
@@ -74,12 +79,14 @@ namespace PatrogueStudio.Astar {
 
         public void OnPathFound(Vector3[] newPath, bool pathSuccessfull) {
             if (pathSuccessfull) {
+                if(enemy.destroyed == false) { 
                 targetIndex = 0;
                 path = new Vector3[0];
                 path = newPath;
                 failed = false;
                 StopCoroutine(nameof(FollowPath));
                 StartCoroutine(nameof(FollowPath));
+                }
             } else {
                 failed = true;
             }
