@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.4082179, y: -0.23456968, z: 0.10938163, w: 0.8754262}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.374, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd1f60ae52f897468b3415fe6ad8d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7041623986840206698, guid: 2ecfeab4e9a2bcf428af76a461e8142f, type: 3}
+  enemy: {fileID: 3411911718914861462, guid: d59c570e28d72814290cc35bd1162ba5, type: 3}
   player: {fileID: 1401381909}
   innerZone: {x: 14, y: 7}
   outerZone: {x: 40, y: 33}
@@ -1367,6 +1367,14 @@ PrefabInstance:
     - target: {fileID: 2590277127216353593, guid: 0c7709f92a01c6c41812cf44625b8b29, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590277128002818151, guid: 0c7709f92a01c6c41812cf44625b8b29, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590277128002818151, guid: 0c7709f92a01c6c41812cf44625b8b29, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 720
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7992360498250838293, guid: 0c7709f92a01c6c41812cf44625b8b29, type: 3}

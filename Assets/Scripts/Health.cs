@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
             float dropvalue = Random.Range(0f, 1f);
             if (1 - dropchance < dropvalue)
             {
-                Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
+                Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1.7f, transform.position.z), transform.rotation);
             }
 
             Destroy(gameObject);
