@@ -5,13 +5,14 @@ public class Health : MonoBehaviour {
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
-
+    [SerializeField] private AudioSource _healthsound;
     public float currentHealth;
     public bool destroyed = false;
 
     void Start() {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -56,10 +57,12 @@ public class Health : MonoBehaviour {
             TakeDamage(1);
         }
 
-        if (target.gameObject.CompareTag(gameObject.tag) && currentHealth + 1 < maxHealth) {
+        if (target.gameObject.CompareTag(gameObject.tag) && currentHealth + 1 < maxHealth ) {
             if (target.collider.gameObject.layer == LayerMask.NameToLayer("Medkit")) {
                 AddHealth(10);
                 Destroy(target.gameObject);
+                _healthsound.Play();
+
             } else {
                 AddHealth(0.1f);
             }

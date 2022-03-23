@@ -4,10 +4,15 @@ public class Shooting : MonoBehaviour {
     [SerializeField] private Transform start;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private AudioSource _audiosource;
+
+
+
 
     private void Update() {
         if (Input.GetButtonDown("Fire1")) {
             Shoot();
+            _audiosource.Play();
         }
     }
 
