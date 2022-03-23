@@ -3,8 +3,11 @@ using UnityEngine;
 public class SelfDestruct : MonoBehaviour {
 
     public float timer;
+    [SerializeField] public bool onCollisionDestroy = true;
     private void OnCollisionEnter(Collision collision) {
+        if(onCollisionDestroy == true) { 
         Destroy(gameObject);
+    }
     }
 
     public void Update() {
