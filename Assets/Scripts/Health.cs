@@ -36,6 +36,10 @@ public class Health : MonoBehaviour {
         if (target.gameObject.CompareTag("Bullet")) {
             TakeDamage(20);
         }
+        if (target.gameObject.CompareTag("BulletT"))
+        {
+            TakeDamage(20);
+        }
 
         if (target.gameObject.CompareTag("Player")) {
             TakeDamage(0.1f);
