@@ -6,21 +6,29 @@ public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody rb;
     private Vector3 movement;
-    private Vector3 mousePos;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
     }
 
+
+    private void Update()
+    {
+        Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength))
+        {
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+    }
+
     private void FixedUpdate() {
-        mousePos = Input.mousePosition;
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * movement);
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg + 90f;
-        rb.rotation = Quaternion.Euler(0, angle, 0);
     }
 }
