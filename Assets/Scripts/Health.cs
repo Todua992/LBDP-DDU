@@ -7,11 +7,14 @@ public class Health : MonoBehaviour
     [SerializeField] private float dropchance;
     [SerializeField] private GameObject medkit;
     [SerializeField] private AudioSource _healthsound;
+    
     public float currentHealth;
     public bool destroyed = false;
+    private Score score;
 
     void Start()
     {
+        score = GameObject.Find("ScoreController").GetComponent<Score>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
@@ -32,7 +35,7 @@ public class Health : MonoBehaviour
             {
                 Instantiate(medkit, new Vector3(transform.position.x, transform.position.y + 1.7f, transform.position.z), transform.rotation);
             }
-
+            score.score++;
             destroyed = true;
             Destroy(gameObject);
         }
